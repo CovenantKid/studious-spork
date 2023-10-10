@@ -1,6 +1,7 @@
 // Assignment code here
 
 // getting length of the password to be generated
+
 function generatePassword(){
 var password= []
 var UsedCharacters=[]
@@ -8,9 +9,31 @@ var length = prompt("How long should the password be?")
 var length = String(length)
 if (length < 8) alert("below minumum length. (8)") 
 if (length > 128) alert("Above maximum length. (128)")
-// Special characters confirmation section
-  var SpecChars =confirm("Allow special characters? Ok for yes, Cancel for no.")
-  if (SpecChars = true) (UsedCharacters = UsedCharacters + ["!@#$%^&*()"])
+// characters confirmation section
+if (confirm("Use special characters? Ok for yes, Cancel for no.") == true){
+  var UsedCharacters = UsedCharacters + ["!@#$%^&*()"]
+} else {
+  console.log("special characters disabled.")
+}
+if (confirm("Use numbers? Ok for yes, Cancel for no.") == true){
+  var UsedCharacters = UsedCharacters + ["123456789"]
+} else {
+  console.log("numbers disabled.")
+}
+if (confirm("Use capital letters? Ok for yes, Cancel for no.") == true){
+  var UsedCharacters = UsedCharacters + ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
+} else {
+  console.log("capital letters disabled.")
+}
+if (confirm("Use lowercase letters? Ok for yes, Cancel for no.") == true){
+  var UsedCharacters = UsedCharacters + ["abcdefghijklmnopqrstuvwxyz"]
+} else {
+  console.log("lowercase letters disabled.")
+}
+// checking if UsedCharacters is empty.
+if (UsedCharacters.length == 0){
+  return "Please select atleast one character type and try again!"
+}
 // generation section
     for (i = 0; i != length; i++){
     holdover = UsedCharacters[Math.floor(Math.random() * UsedCharacters.length)]
@@ -18,15 +41,7 @@ if (length > 128) alert("Above maximum length. (128)")
     }
     console.log(UsedCharacters)
     return password
-    
   }
-    
-
-  
-
-
-
-
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
