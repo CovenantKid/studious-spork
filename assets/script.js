@@ -7,8 +7,13 @@ var password= []
 var UsedCharacters=[]
 var length = prompt("How long should the password be?")
 var length = String(length)
-if (length < 8) alert("below minumum length. (8)") 
-if (length > 128) alert("Above maximum length. (128)")
+if (length < 8){
+  return "Below minumum length of 8 characters! Please select a higher number and try again!"
+}
+if (length > 128){
+  return "Above maximum length of 128 characters! Please select a lower number and try again!"
+}
+
 // characters confirmation section
 if (confirm("Use special characters? Ok for yes, Cancel for no.") == true){
   var UsedCharacters = UsedCharacters + ["!@#$%^&*()"]
@@ -31,10 +36,12 @@ if (confirm("Use lowercase letters? Ok for yes, Cancel for no.") == true){
   console.log("lowercase letters disabled.")
 }
 // checking if UsedCharacters is empty.
+
 if (UsedCharacters.length == 0){
   return "Please select atleast one character type and try again!"
 }
 // generation section
+
     for (i = 0; i != length; i++){
     holdover = UsedCharacters[Math.floor(Math.random() * UsedCharacters.length)]
     password = password + holdover
